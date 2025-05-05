@@ -32,13 +32,13 @@ Route::get('/employees', function(){
 });
 
 // Buscar por Id o Funcionario:
-Route::get('/employees/{$id}', function($id){
+Route::get('/employees/{id}', function($id){
     $employee = Employee::find($id);
     return response()->json($employee);
 });
 
 // Atualizar Funcionario:
-Route::patch('/employees/{$id}', function(Request $request, $id){
+Route::patch('/employees/{id}', function(Request $request, $id){
     $employee = Employee::find($id);
 
     if ($request->input('name') !== null){
@@ -63,7 +63,7 @@ Route::patch('/employees/{$id}', function(Request $request, $id){
 });
 
 // Deletar Funcionario:
-Route::delete('/employees/{$id}', function($id){
+Route::delete('/employees/{id}', function($id){
     $employee = Employee::find($id);
 
     $employee->delete();
@@ -90,13 +90,13 @@ Route::get('/departaments', function(){
 });
 
 // Buscar por Id o Departamento:
-Route::get('/departaments/{$id}', function($id){
+Route::get('/departaments/{id}', function($id){
     $departament = Departament::find($id);
     return response()->json($departament);
 });
 
 // Atualizar Departamento:
-Route::patch('/departaments/{$id}', function(Request $request, $id){
+Route::patch('/departaments/{id}', function(Request $request, $id){
     $departament = Departament::find($id);
 
     if ($request->input('name') !== null){
@@ -112,7 +112,7 @@ Route::patch('/departaments/{$id}', function(Request $request, $id){
 });
 
 // Deletar Departamento:
-Route::delete('/departaments/{$id}', function($id){
+Route::delete('/departaments/{id}', function($id){
     $departament = Departament::find($id);
 
     $departament->delete();
@@ -136,7 +136,7 @@ Route::get('/departaments/employees', function(){
 
 // ------------------ 5. Buscar Departamento de um Funcionário
 
-Route::get('/employees/departaments/{$id}', function($id){
+Route::get('/employees/departaments/{id}', function($id){
     $employees = Employee::find($id);
     $departament = $employees->departament;
 
@@ -145,7 +145,7 @@ Route::get('/employees/departaments/{$id}', function($id){
 
 // ------------------ 6. Buscar Funcionários de um Departamento
 
-Route::get('/departaments/employees/{$id', function($id){
+Route::get('/departaments/employees/{id}', function($id){
     $departament = Departament::find($id);
     $employees = $departament->employees;
 
