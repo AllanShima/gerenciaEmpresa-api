@@ -3,6 +3,10 @@ Pra executar:
 1: 'composer install';
 2. 'php artisan serve'.
 
+OBS: O arquivo para a coleção do postman também está na pasta.
+
+------
+
 Passos do desenvolvimento da atividade:
 
 1. criando 'api.php';

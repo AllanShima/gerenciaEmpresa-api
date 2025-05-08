@@ -9,6 +9,22 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+// ------------------ 3. Listar Funcionários com seus Departamentos
+
+Route::get('/employees/departaments', function(){
+    $employees = Employee::with('departaments')->get();
+    return response()->json($employees);
+});
+
+// ------------------ 5. Buscar Departamento de um Funcionário
+
+Route::get('/employees/departaments/{id}', function($id){
+    $employees = Employee::find($id);
+    $departament = $employees->departament;
+
+    return response()->json($departament);
+});
+
 // -------- 1. Criar, Listar, Buscar por Id, Atualizar, Deletar Funcionários
 
 // Criar Funcio.
@@ -71,6 +87,22 @@ Route::delete('/employees/{id}', function($id){
     return response()->json($employee);
 });
 
+// ------------------ 4. Listar Departamento com seus Funcionários
+
+Route::get('/departaments/employees', function(){
+    $departament = Employee::with('employees')->get();
+    return response()->json($departament);
+});
+
+// ------------------ 6. Buscar Funcionários de um Departamento
+
+Route::get('/departaments/employees/{id}', function($id){
+    $departament = Departament::find($id);
+    $employees = $departament->employees;
+
+    return response()->json($employees);
+});
+
 // -------- 2. Criar, Listar, Buscar por Id, Atualizar, Deletar Departamentos
 
 // Criar
@@ -88,6 +120,7 @@ Route::get('/departaments', function(){
     $departament = Departament::all();
     return response()->json($departament);
 });
+
 
 // Buscar por Id o Departamento:
 Route::get('/departaments/{id}', function($id){
@@ -118,36 +151,4 @@ Route::delete('/departaments/{id}', function($id){
     $departament->delete();
 
     return response()->json($departament);
-});
-
-// ------------------ 3. Listar Funcionários com seus Departamentos
-
-Route::get('/employees/departaments', function(){
-    $employees = Employee::with('departaments')->get();
-    return response()->json($employees);
-});
-
-// ------------------ 4. Listar Departamento com seus Funcionários
-
-Route::get('/departaments/employees', function(){
-    $departament = Employee::with('employees')->get();
-    return response()->json($departament);
-});
-
-// ------------------ 5. Buscar Departamento de um Funcionário
-
-Route::get('/employees/departaments/{id}', function($id){
-    $employees = Employee::find($id);
-    $departament = $employees->departament;
-
-    return response()->json($departament);
-});
-
-// ------------------ 6. Buscar Funcionários de um Departamento
-
-Route::get('/departaments/employees/{id}', function($id){
-    $departament = Departament::find($id);
-    $employees = $departament->employees;
-
-    return response()->json($employees);
 });
