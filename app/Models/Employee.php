@@ -10,6 +10,6 @@ class Employee extends Model
     protected $fillable = ['name','salary','role', 'admission_date', 'departament_id'];
 
     public function departament() {
-        return $this->belongsTo(Category::class, 'departament_id', 'id');
+        return $this->belongsTo(Departament::class, 'departament_id', 'id');
     }
 }

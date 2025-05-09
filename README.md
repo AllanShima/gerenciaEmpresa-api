@@ -1,9 +1,11 @@
 Pra executar:
 
-1: 'composer install';
-2. 'php artisan serve'.
+1. 'composer install';
+2. 'php artisan migrate';
+3. 'php artisan serve'.
 
 OBS: O arquivo para a coleção do postman também está na pasta.
+- Pra criar um funcionário, primeiro cria um departamento
 
 ------
 

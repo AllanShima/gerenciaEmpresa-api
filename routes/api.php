@@ -12,7 +12,7 @@ Route::get('/user', function (Request $request) {
 // ------------------ 3. Listar Funcionários com seus Departamentos
 
 Route::get('/employees/departaments', function(){
-    $employees = Employee::with('departaments')->get();
+    $employees = Employee::with('departament')->get();
     return response()->json($employees);
 });
 
@@ -47,12 +47,6 @@ Route::get('/employees', function(){
     return response()->json($employees);
 });
 
-// Buscar por Id o Funcionario:
-Route::get('/employees/{id}', function($id){
-    $employee = Employee::find($id);
-    return response()->json($employee);
-});
-
 // Atualizar Funcionario:
 Route::patch('/employees/{id}', function(Request $request, $id){
     $employee = Employee::find($id);
@@ -78,6 +72,13 @@ Route::patch('/employees/{id}', function(Request $request, $id){
     return response()->json($employee);
 });
 
+// Buscar por Id o Funcionario:
+Route::get('/employees/{id}', function($id){
+    $employee = Employee::find($id);
+    return response()->json($employee);
+});
+
+
 // Deletar Funcionario:
 Route::delete('/employees/{id}', function($id){
     $employee = Employee::find($id);
@@ -90,7 +91,7 @@ Route::delete('/employees/{id}', function($id){
 // ------------------ 4. Listar Departamento com seus Funcionários
 
 Route::get('/departaments/employees', function(){
-    $departament = Employee::with('employees')->get();
+    $departament = Departament::with('employee')->get();
     return response()->json($departament);
 });
 
