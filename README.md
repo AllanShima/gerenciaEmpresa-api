@@ -9,7 +9,7 @@ OBS:
 - Pra criar um funcionário, primeiro cria um departamento
 - Dependendo de qual o id do funcionario ou departamento que será criado, o id da url também deverá ser trocado.
 
-Pra visualizar as duas tabelas foi usando o seguinte código no workbench:
+Pra visualizar as duas tabelas foi usando o seguinte código sql no workbench:
 
 USE `app-empresa-rh`;
 
