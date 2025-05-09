@@ -91,7 +91,7 @@ Route::delete('/employees/{id}', function($id){
 // ------------------ 4. Listar Departamento com seus Funcionários
 
 Route::get('/departaments/employees', function(){
-    $departament = Departament::with('employee')->get();
+    $departament = Departament::with('employees')->get();
     return response()->json($departament);
 });
 
